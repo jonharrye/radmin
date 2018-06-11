@@ -6,7 +6,7 @@
   "scripts": {
     "start": "electron ."
   },
-  "repository": "https://github.com/electron/radmin",
+  "repository": "https://github.com/ratherbsurfing/radmin",
   "keywords": [
     "Electron",
     "admin",

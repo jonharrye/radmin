@@ -10,6 +10,7 @@ function createWindow () {
   mainWindow = new BrowserWindow({width: 800, height: 600})
 
   // and load the index.html of the app.
+  // todo: move the value of the starting UI location to a configuration admin screen
   mainWindow.loadURL(`file://${__dirname}/ui/admin/lobiadmin/version/1.0/ajax/index.html`)
 
   // Open the DevTools.

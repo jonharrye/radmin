@@ -1,13 +1,19 @@
 // Modules to control application life and create native browser window
-const {app, BrowserWindow} = require('electron')
+const electron = require('electron')
+const {app, BrowserWindow} = electron
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
 
 function createWindow () {
+  // Create the properties for a full screen window to the viewport 
+  // https://github.com/electron/electron/blob/master/docs/api/screen.md
+  // todo, set this as a user defined but default property in an admin setup screen
+const {width, height} = electron.screen.getPrimaryDisplay().workAreaSize
+
   // Create the browser window.
-  mainWindow = new BrowserWindow({width: 800, height: 600})
+  mainWindow = new BrowserWindow({width, height})
 
   // and load the index.html of the app.
   // todo: move the value of the starting UI location to a configuration admin screen

@@ -1,0 +1,22 @@
+{
+  "name": "radmin",
+  "version": "1.0.0",
+  "description": "An easy to update admin dashboard utility",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": "https://github.com/electron/radmin",
+  "keywords": [
+    "Electron",
+    "admin",
+    "dashboard",
+    "lobiadmin",
+    "cms"
+  ],
+  "author": "ratherbsurfing",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "electron": "^2.0.0"
+  }
+}

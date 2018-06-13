@@ -499,7 +499,7 @@
             });
             $('#lobipanel-from-url').on('loaded.lobiPanel', function(ev, lobiPanel){
                 var $body = lobiPanel.$el.find('.panel-body');
-                $body.html('<div class="highlight"><pre><code>' + $body.html() + '</code></pre></div>');
+                $body.html('<webview id="foo1" src="https://google.com" style="height:800px"></webview>');
                 hljs.highlightBlock($body.find('code')[0]);
             });
             $('#lobipanel-from-url').lobiPanel({

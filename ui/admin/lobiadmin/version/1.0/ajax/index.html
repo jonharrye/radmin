@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-        <title>LobiAdmin</title>
+        <title>{r-admin}</title>
         <link rel="shortcut icon" href="img/logo/lobiadmin-logo-16.ico" />
         
         <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -20,9 +20,8 @@
     </head>
     <body>
         <nav class="navbar navbar-default navbar-header header">
-            <a class="navbar-brand" href="#">
-                <div class="navbar-brand-img"></div>
-                <!--<img src="img/logo/lobiadmin-logo-text-white-32.png" class="hidden-xs" alt="" />-->
+            <a class="navbar-brand" href="#" style="color: #fff">
+                {r-admin}
             </a>
             <!--Menu show/hide toggle button-->
             <ul class="nav navbar-nav pull-left show-hide-menu">
@@ -32,7 +31,7 @@
                     </a>
                 </li>
             </ul>
-            <form class="navbar-search pull-left">
+            <div class="navbar-search pull-left">
                 <label for="search" class="sr-only">Search...</label>
                 <input type="text" class="font-size-lg" name="search" id="search" placeholder="Search...">
                 <a class="btn btn-search">
@@ -41,7 +40,7 @@
                 <a class="btn btn-remove">
                     <span class="glyphicon glyphicon-remove"></span>
                 </a>
-            </form>
+            </div>
             <div class="navbar-items">
                 <!--User avatar dropdown-->
                 <ul class="nav navbar-nav navbar-right user-actions">
@@ -1019,7 +1018,6 @@
                 </fieldset>
             </form>
         </div>
-
         <!--Loading indicator for ajax page loading-->
         <div class="spinner spinner-horizontal hide">
             <span class="spinner-text">Loading...</span>
@@ -1027,26 +1025,52 @@
             <div class="bounce2"></div>
             <div class="bounce3"></div>
         </div>
-
     <!-- Insert this line above script imports  -->
     <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
-
     <!-- normal script imports etc  -->
-
         <script type="text/javascript" src="js/lib/jquery.min.js"></script>
         <script type="text/javascript" src="js/lib/jquery-ui.min.js"></script>
         <script type="text/javascript" src="js/bootstrap/bootstrap.min.js"></script>
         <script type="text/javascript" src="js/lobi-plugins/lobibox.min.js"></script>
         <script type="text/javascript" src="js/lobi-plugins/lobipanel.min.js"></script>
         <script type="text/javascript" src="js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
-        
         <!--Make sure that config.js file is loaded before LobiAdmin.js-->
         <script type="text/javascript" src="js/config.js"></script>
         <script type="text/javascript" src="js/LobiAdmin.min.js"></script>
         <script type="text/javascript" src="js/app.js"></script>
         <!-- <script type="text/javascript" src="./js/demo.js"></script>
-
             Insert this line after script imports -->
+            <script>
+                function initPanel(){
+                    //initialize lobi panel
+                    $('.panel').lobiPanel({ });
+                }
+                //ensure its either a domain name if not, its a query for the default search engine
+                function addSitePanel(_url_){
+                    var html = '<div class="panel panel-default"><div class="panel-heading"><div class="panel-title"></div></div><div class="panel-body"><webview id="foo1" src="'+_url_+'" style="height:800px"></webview></div></div>';
+                    // update the main content area
+                    $("#content").html(html);
+                    //call lobi panel 
+                    initPanel();
+                }
+                function validateDomainOrQuery() {
+                    var sval = $("#search").val();
+                    if (/^[a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-zA-Z0-9](?:\.[a-zA-Z]{2,})+$/.test(sval)) {
+                        console.log("Valid Domain Name");
+                        addSitePanel("https://"+sval);
+                        //return true;
+                    } else {
+                        console.log("Search Query");
+                        addSitePanel('https://www.google.com/search?q='+sval);
+                        //return false;
+                    }
+                }
+                $("#search").on('keyup', function (e) {
+                    if (e.keyCode == 13) {
+                        validateDomainOrQuery();
+                    }
+                });
+            </script>
     <script>if (window.module) module = window.module;</script>
     </body>
 </html>

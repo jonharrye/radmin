@@ -862,7 +862,6 @@
                                    <div> 
         Current Zoom: <span style="font-weight: bold;" id="current-value"></span>
             <br />
-        <input type="range" id="zoom" min="1" value="1" max="5" step="1">
         <button id="zoomOut" class="btn btn-info btn-block btn-pretty btn-lg" style="width:22px;">Block button</button>
         <button id="zoomIn" class="btn btn-info btn-block btn-pretty btn-lg" style="width:22px;">Block button</button>
         <button id="zoomReset" class="btn btn-info btn-block btn-pretty btn-lg" style="width:22px;">Block button</button>
@@ -1041,30 +1040,6 @@
     <!-- Insert this line above script imports  -->
     <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
 
-        <script>
-            const {webFrame} = require('electron'); 
-            
-            let zoomLevelSpan = document.getElementById("current-value");
-            console.log(zoomLevelSpan);
-
-            function getFactorInPercent(value){
-                return (parseInt(value) * 100) + "%"
-            }
-
-            document.getElementById("zoom").addEventListener("input", function(){
-                var value = this.value;
-
-                // Update zoom factor
-                webFrame.setZoomFactor(parseInt(value));
-
-                // Update label
-                zoomLevelSpan.innerHTML = getFactorInPercent(value);
-            }, false);
-
-            document.addEventListener('DOMContentLoaded', function(){
-                zoomLevelSpan.innerHTML = getFactorInPercent(webFrame.getZoomFactor());
-            }, false);
-        </script>
     <!-- normal script imports etc  -->
         <script type="text/javascript" src="js/lib/jquery.min.js"></script>
         <script type="text/javascript" src="js/lib/jquery-ui.min.js"></script>
@@ -1099,6 +1074,7 @@
                         //return true;
                     } else {
                         console.log("Search Query");
+                        //todo: move the google or search default engine to a global configuration file.
                         addSitePanel('https://www.google.com/search?q='+sval);
                         //return false;
                     }
@@ -1111,6 +1087,14 @@
                 $( "#zoomOut" ).click(function() {
                   //alert( "Handler for .click() called." );
                   document.getElementById("foo1").send("zoomOut");
+                });
+                $( "#zoomIn" ).click(function() {
+                  //alert( "Handler for .click() called." );
+                  document.getElementById("foo1").send("zoomIn");
+                });
+                $( "#zoomReset" ).click(function() {
+                  //alert( "Handler for .click() called." );
+                  document.getElementById("foo1").send("zoomReset");
                 });
             </script>
     <script>if (window.module) module = window.module;</script>

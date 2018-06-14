@@ -11,17 +11,20 @@ ipc.on("zoomIn", function () {
         _browser_zoomLevel += 1;
     }
     webFrame.setZoomLevel(_browser_zoomLevel);
+    console.log("Zoom In");
 });
-
 
 ipc.on("zoomOut", function () {
     if (_browser_minZoom < _browser_zoomLevel) {
         _browser_zoomLevel -= 1;
     }
     webFrame.setZoomLevel(_browser_zoomLevel);
+    console.log("Zoom Out");
+
 });
 
 ipc.on("zoomReset", function () {
+    console.log("Reset Zoom");
     _browser_zoomLevel = 0;
     webFrame.setZoomLevel(_browser_zoomLevel);
 });

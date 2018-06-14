@@ -84,7 +84,9 @@
                 </div>
             </div>
         </div>
-        
+     <!-- Insert this line above script imports  -->
+    <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+
         <script type="text/javascript" src="js/lib/jquery.min.js"></script>
         <script type="text/javascript" src="js/bootstrap/bootstrap.min.js"></script>
         <script type="text/javascript" src="js/config.js"></script>
@@ -92,7 +94,7 @@
             $(function(){
                 var CONFIG = window.LobiAdminConfig;
                 $('.lock-screen-form').submit(function(ev){
-                    window.location.href = window.location.href+"/../";
+                    window.location.href = window.location.href+"./index.html";
                     return false;
                 });
                 //Initialize time on lock screen and timeout for show slideshow
@@ -125,5 +127,6 @@
                 })();
             });
         </script>
+            <script>if (window.module) module = window.module;</script>
     </body>
 </html>

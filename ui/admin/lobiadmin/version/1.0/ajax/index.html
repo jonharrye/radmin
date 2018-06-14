@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!--Author     : @arboshiki-->
+<!--Author: @arboshiki-->
 <html> 
     <head>
         <meta charset="UTF-8">
@@ -19,6 +19,7 @@
         <link rel="stylesheet" href="css/demo.css"/>
     </head>
     <body>
+
         <nav class="navbar navbar-default navbar-header header">
             <a class="navbar-brand" href="#" style="color: #fff">
                 {r-admin}
@@ -857,6 +858,17 @@
                                     Profile
                                 </a>
                             </li>
+                            <li>
+                                   <div> 
+        Current Zoom: <span style="font-weight: bold;" id="current-value"></span>
+            <br />
+        <input type="range" id="zoom" min="1" value="1" max="5" step="1">
+        <button id="zoomOut" class="btn btn-info btn-block btn-pretty btn-lg" style="width:22px;">Block button</button>
+        <button id="zoomIn" class="btn btn-info btn-block btn-pretty btn-lg" style="width:22px;">Block button</button>
+        <button id="zoomReset" class="btn btn-info btn-block btn-pretty btn-lg" style="width:22px;">Block button</button>
+
+    </div>
+                            </li>
                         </ul>
                     </li>
                 </ul>
@@ -1025,8 +1037,34 @@
             <div class="bounce2"></div>
             <div class="bounce3"></div>
         </div>
+
     <!-- Insert this line above script imports  -->
     <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+
+        <script>
+            const {webFrame} = require('electron'); 
+            
+            let zoomLevelSpan = document.getElementById("current-value");
+            console.log(zoomLevelSpan);
+
+            function getFactorInPercent(value){
+                return (parseInt(value) * 100) + "%"
+            }
+
+            document.getElementById("zoom").addEventListener("input", function(){
+                var value = this.value;
+
+                // Update zoom factor
+                webFrame.setZoomFactor(parseInt(value));
+
+                // Update label
+                zoomLevelSpan.innerHTML = getFactorInPercent(value);
+            }, false);
+
+            document.addEventListener('DOMContentLoaded', function(){
+                zoomLevelSpan.innerHTML = getFactorInPercent(webFrame.getZoomFactor());
+            }, false);
+        </script>
     <!-- normal script imports etc  -->
         <script type="text/javascript" src="js/lib/jquery.min.js"></script>
         <script type="text/javascript" src="js/lib/jquery-ui.min.js"></script>
@@ -1047,7 +1085,7 @@
                 }
                 //ensure its either a domain name if not, its a query for the default search engine
                 function addSitePanel(_url_){
-                    var html = '<div class="panel panel-default"><div class="panel-heading"><div class="panel-title"></div></div><div class="panel-body"><webview id="foo1" src="'+_url_+'" style="height:800px"></webview></div></div>';
+                    var html = '<div class="panel panel-default"><div class="panel-heading"><div class="panel-title"></div></div><div class="panel-body"><webview id="foo1" src="'+_url_+'" style="height:800px" preload="js/webview-helper.js"></webview></div></div>';
                     // update the main content area
                     $("#content").html(html);
                     //call lobi panel 
@@ -1069,6 +1107,10 @@
                     if (e.keyCode == 13) {
                         validateDomainOrQuery();
                     }
+                });
+                $( "#zoomOut" ).click(function() {
+                  //alert( "Handler for .click() called." );
+                  document.getElementById("foo1").send("zoomOut");
                 });
             </script>
     <script>if (window.module) module = window.module;</script>

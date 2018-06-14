@@ -146,14 +146,15 @@
                 </div>
             </form>
         </div>
-        
+      <!-- Insert this line above script imports  -->
+    <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>      
 
         <script type="text/javascript" src="js/lib/jquery.min.js"></script>
         <script type="text/javascript" src="js/bootstrap/bootstrap.min.js"></script>
         <script type="text/javascript">
             $('.login-wrapper').ready(function(){
                 $('.login-form').submit(function(){
-                    window.location.href = window.location.href+"/../";
+                    window.location.href = window.location.href+"./index.html";
                     return false;
                 });
                 $('.signup-form').submit(function(){
@@ -179,5 +180,6 @@
                 $form.parent().find('.signup-form').addClass('visible');
             });
         </script>
+    <script>if (window.module) module = window.module;</script>
     </body>
 </html>

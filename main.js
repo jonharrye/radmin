@@ -13,7 +13,7 @@ function createWindow () {
 const {width, height} = electron.screen.getPrimaryDisplay().workAreaSize
 
   // Create the browser window.
-  mainWindow = new BrowserWindow({width, height})
+  mainWindow = new BrowserWindow({width, height}) 
 
   // and load the index.html of the app.
   // todo: move the value of the starting UI location to a configuration admin screen
@@ -52,6 +52,7 @@ app.on('activate', function () {
     createWindow()
   }
 })
+
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.

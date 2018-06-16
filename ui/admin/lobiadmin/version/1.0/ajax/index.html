@@ -885,9 +885,26 @@
                 <ol class="breadcrumb">
                 </ol>
             </div>
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="panel-title">
+            <h4>Panel title</h4>
+        </div>
+    </div>
+    <div class="panel-body">
+        Lorem ipsum...
+
+
             <div id="content">
                 
             </div>
+
+    </div>
+</div>
+
+
         </div>
         <!--Setting box-->
         <div class="setting-box hidden-print">
@@ -961,43 +978,6 @@
                             </label>
                         </div>
                     </div>
-<!--                    <div class="row row-skin-options">
-                        <h4>Skins</h4>
-                        <div class="btn-group display-block" data-toggle="buttons">
-                            <label class="radio-inline">
-                                <input type="radio" name="header-skin" value="0">
-                                <div>
-                                    <div class="setting-header"></div>
-                                    <div class="setting-menu"></div>
-                                </div>
-                                <i class="fa fa-check-square"></i>
-                            </label>
-                            <label class="radio-inline">
-                                <input type="radio" name="header-skin" value="header-cyan">
-                                <div>
-                                    <div class="setting-header"></div>
-                                    <div class="setting-menu"></div>
-                                </div>
-                                <i class="fa fa-check-square"></i>
-                            </label>
-                            <label class="radio-inline">
-                                <input type="radio" name="header-skin" value="header-green">
-                                <div>
-                                    <div class="setting-header"></div>
-                                    <div class="setting-menu"></div>
-                                </div>
-                                <i class="fa fa-check-square"></i>
-                            </label>
-                            <label class="radio-inline">
-                                <input type="radio" name="header-skin" value="header-brown">
-                                <div>
-                                    <div class="setting-header"></div>
-                                    <div class="setting-menu"></div>
-                                </div>
-                                <i class="fa fa-check-square"></i>
-                            </label>
-                        </div>
-                    </div>-->
                     <div class="row row-bg-options">
                         <h4>Background</h4>
                         <div class="col-xs-3">
@@ -1055,14 +1035,16 @@
             Insert this line after script imports -->
             <script>
                 function initPanel(){
-                    //initialize lobi panel
-                    $('.panel').lobiPanel({ });
-                }
+                      $('.panel').lobiPanel({sortable:true});                                    
+                    }
+
                 //ensure its either a domain name if not, its a query for the default search engine
                 function addSitePanel(_url_){
                     var html = '<div class="panel panel-default"><div class="panel-heading"><div class="panel-title"></div></div><div class="panel-body"><webview id="foo1" src="'+_url_+'" style="height:800px" preload="js/webview-helper.js"></webview></div></div>';
                     // update the main content area
-                    $("#content").html(html);
+                    var currentContent = $("#content").html();
+                    $("#content").append(html);
+                    //$("#content").html(html+currentContent);
                     //call lobi panel 
                     initPanel();
                 }
@@ -1096,6 +1078,27 @@
                   //alert( "Handler for .click() called." );
                   document.getElementById("foo1").send("zoomReset");
                 });
+
+
+                            //$('.panel').lobiPanel({
+                //sortable: true
+            //});
+            var ready = false;
+
+document.onreadystatechange = function() {
+
+    if (ready) {
+        return;
+    }
+    
+    // interactive = DOMContentLoaded & complete = window.load
+    if (document.readyState == 'interactive' || document.readyState == 'complete') {
+        ready = true;
+        
+        // init you code here
+        initPanel();
+    }
+};
             </script>
     <script>if (window.module) module = window.module;</script>
     </body>

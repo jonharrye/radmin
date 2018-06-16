@@ -5,40 +5,46 @@
         <div class="panel panel-info lobipanel">
             <div class="panel-heading">
                 <div class="panel-title">
-                    <h4>LobiPanel title</h4>
+                    <h4>Home</h4>
                 </div>
             </div>
             <div class="panel-body">
-                <div class="panel panel-warning lobipanel">
+                <div class="row">
+                <div class="col-lg-6">
+                <div class="panel panel-light lobipanel">
                     <div class="panel-heading">
                         <div class="panel-title">
-                            <h4>Nested LobiPanel title</h4>
+                            <h4>google</h4>
                         </div>
                     </div>
                     <div class="panel-body">
-                        Panel 1
+                            <webview id="foo00" src="https://mail.google.com/a/chadcollins.com" preload="js/webview-helper.js" style="height:350px"></webview>
                     </div>
                 </div>
+            </div>
+               <div class="col-lg-6">
+                <div class="panel panel-light lobipanel">
+                    <div class="panel-heading">
+                        <div class="panel-title">
+                            <h4>slack</h4>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                            <webview id="foo01" src="https://chadcollins.slack.com/messages/" preload="js/webview-helper.js" style="height:350px"></webview>
+                    </div>
+                </div>
+                </div>
+            </div>
                 <div class="row">
                     <div class="col-lg-3">
                         <div class="panel panel-light lobipanel">
                             <div class="panel-heading">
                                 <div class="panel-title">
-                                    <h4>Panel title</h4>
+                                    <h4>google</h4>
                                 </div>
                             </div>
                             <div class="panel-body">
-                                <div style="height:150px"><webview src="https://google.com"></webview></div>
-                            </div>
-                        </div>
-                        <div class="panel panel-light lobipanel">
-                            <div class="panel-heading">
-                                <div class="panel-title">
-                                    <h4>Google.com</h4>
-                                </div>
-                            </div>
-                            <div class="panel-body">
-                                <div style="height:150px">content</div>
+                                <webview id="foo1" src="https://google.com" preload="js/webview-helper.js"></webview>
                             </div>
                         </div>
                     </div>
@@ -46,21 +52,11 @@
                         <div class="panel panel-light lobipanel">
                             <div class="panel-heading">
                                 <div class="panel-title">
-                                    <h4>Slack.com</h4>
+                                    <h4>google</h4>
                                 </div>
                             </div>
                             <div class="panel-body">
-                                <div style="height:150px"><webview src="https://csubs.slack.com/messages"></webview></div>
-                            </div>
-                        </div>
-                        <div class="panel panel-light lobipanel">
-                            <div class="panel-heading">
-                                <div class="panel-title">
-                                    <h4>Mail</h4>
-                                </div>
-                            </div>
-                            <div class="panel-body">
-                                <div style="height:150px"><webview src="https://mail.google.com/"></div>
+                                <webview id="foo3" src="https://google.com" preload="js/webview-helper.js"></webview>
                             </div>
                         </div>
                     </div>
@@ -68,21 +64,11 @@
                         <div class="panel panel-light lobipanel">
                             <div class="panel-heading">
                                 <div class="panel-title">
-                                    <h4>Panel title</h4>
+                                    <h4>google</h4>
                                 </div>
                             </div>
                             <div class="panel-body">
-                                <div style="height:150px">content</div>
-                            </div>
-                        </div>
-                        <div class="panel panel-light lobipanel">
-                            <div class="panel-heading">
-                                <div class="panel-title">
-                                    <h4>Panel title</h4>
-                                </div>
-                            </div>
-                            <div class="panel-body">
-                                <div style="height:150px">content</div>
+                                <webview id="foo5" src="https://google.com" preload="js/webview-helper.js"></webview>
                             </div>
                         </div>
                     </div>
@@ -90,21 +76,11 @@
                         <div class="panel panel-light lobipanel">
                             <div class="panel-heading">
                                 <div class="panel-title">
-                                    <h4>Panel title</h4>
+                                    <h4>google</h4>
                                 </div>
                             </div>
                             <div class="panel-body">
-                                <div style="height:150px">content</div>
-                            </div>
-                        </div>
-                        <div class="panel panel-light lobipanel">
-                            <div class="panel-heading">
-                                <div class="panel-title">
-                                    <h4>Panel title</h4>
-                                </div>
-                            </div>
-                            <div class="panel-body">
-                                <div style="height:150px">content</div>
+                                <webview id="foo7" src="https://google.com" preload="js/webview-helper.js"></webview>
                             </div>
                         </div>
                     </div>
@@ -113,7 +89,6 @@
         </div>
     </div>
 </div>
-
     <!-- Insert this line above script imports  -->
     <script type="text/javascript">
             function initPage(){
@@ -127,8 +102,30 @@
                 $('#lobipanel-multiple .panel').lobiPanel({
                     sortable: true
                 });
-
+              //alert( "Handler for .click() called." );
+              //document.getElementById("foo1").send("zoomOutFull");
+              //console.log('set test')
             }
         initPage();
+
+                        $( document ).ready(function() {
+                    setTimeout(function(){
+                        document.getElementById('foo00').send("zoomOutFull-5.5");
+                        document.getElementById('foo01').send("zoomOutFull-5.5");
+
+                        document.getElementById('foo1').send("zoomOutFull-7.5");
+                        document.getElementById('foo2').send("zoomOutFull-7.5");
+                        document.getElementById('foo3').send("zoomOutFull-7.5");
+                        document.getElementById('foo4').send("zoomOutFull-7.5");
+                        document.getElementById('foo5').send("zoomOutFull-7.5");
+                        document.getElementById('foo6').send("zoomOutFull-7.5");
+                        document.getElementById('foo7').send("zoomOutFull-7.5");
+                        document.getElementById('foo8').send("zoomOutFull-7.5");
+
+
+                    }, 1500);
+                    $('.panel').lobiPanel({sortable:true});                    // console.log( "ready!" );
+                });
+
     </script>
 

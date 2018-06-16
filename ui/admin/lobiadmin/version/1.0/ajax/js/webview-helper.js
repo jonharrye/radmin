@@ -28,4 +28,16 @@ ipc.on("zoomReset", function () {
     _browser_zoomLevel = 0;
     webFrame.setZoomLevel(_browser_zoomLevel);
 });
-//todo: make a method to set the zoom level to -.8 (zoom out size) when pinning or dragging the browser panel to a dock (that will be created)
+
+ipc.on("zoomOutFull-7.5", function () {
+    console.log("Full Zoom Out");
+    _browser_zoomLevel = -7.5;
+    webFrame.setZoomLevel(_browser_zoomLevel);
+});
+
+ipc.on("zoomOutFull-5.5", function () {
+    console.log("Full Zoom Out");
+    _browser_zoomLevel = -3.5;
+    webFrame.setZoomLevel(_browser_zoomLevel);
+});
+console.log("loaded");

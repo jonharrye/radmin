@@ -13,10 +13,7 @@
 
         <!--lobiadmin-with-plugins.css contains all LobiAdmin css plus lobiplugins all css files, plus third party plugins-->
         <link rel="stylesheet" href="css/lobiadmin-with-plugins.css"/>
-        <!--Put your css here-->
-        
-        <!--This css file is for only demo usage-->
-        <link rel="stylesheet" href="css/demo.css"/>
+        <!--Put custom css here-->
     </head>
     <body>
 
@@ -72,12 +69,6 @@
                             <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu">
-                            <li class="active">
-                                <a href="#">
-                                    <img src="img/flags/en.png" alt="en" />
-                                    english(UK)
-                                </a>
-                            </li>
                             <li>
                                 <a href="#">
                                     <img src="img/flags/us.png" alt="en" />
@@ -862,10 +853,10 @@
                                    <div> 
         Current Zoom: <span style="font-weight: bold;" id="current-value"></span>
             <br />
-        <button id="zoomOut" class="btn btn-info btn-block btn-pretty btn-lg" style="width:22px;">Block button</button>
-        <button id="zoomIn" class="btn btn-info btn-block btn-pretty btn-lg" style="width:22px;">Block button</button>
-        <button id="zoomReset" class="btn btn-info btn-block btn-pretty btn-lg" style="width:22px;">Block button</button>
-
+        <button id="zoomOut" class="btn btn-info btn-block btn-pretty btn-sm" style="width:22px;">Block button</button>
+        <button id="zoomIn" class="btn btn-info btn-block btn-pretty btn-sm" style="width:22px;">Block button</button>
+        <button id="zoomReset" class="btn btn-info btn-block btn-pretty btn-sm" style="width:22px;">Block button</button>
+        <button id="zoomOutFull" class="btn btn-info btn-block btn-pretty btn-sm" style="width:22px;">Full Out</button>
     </div>
                             </li>
                         </ul>
@@ -887,22 +878,13 @@
             </div>
 
 
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <div class="panel-title">
-            <h4>Panel title</h4>
-        </div>
-    </div>
-    <div class="panel-body">
-        Lorem ipsum...
 
 
-            <div id="content">
-                
-            </div>
+      <div id="content">
+          </div>
 
-    </div>
 </div>
+
 
 
         </div>
@@ -1040,12 +1022,10 @@
 
                 //ensure its either a domain name if not, its a query for the default search engine
                 function addSitePanel(_url_){
-                    var html = '<div class="panel panel-default"><div class="panel-heading"><div class="panel-title"></div></div><div class="panel-body"><webview id="foo1" src="'+_url_+'" style="height:800px" preload="js/webview-helper.js"></webview></div></div>';
+                    var html = '<div class="panel panel-default"><div class="panel-heading"><div class="panel-title"></div></div><div class="panel-body"><webview id="foo00" src="'+_url_+'" style="height:800px" preload="js/webview-helper.js"></webview></div></div>';
                     // update the main content area
                     var currentContent = $("#content").html();
                     $("#content").append(html);
-                    //$("#content").html(html+currentContent);
-                    //call lobi panel 
                     initPanel();
                 }
                 function validateDomainOrQuery() {
@@ -1078,27 +1058,19 @@
                   //alert( "Handler for .click() called." );
                   document.getElementById("foo1").send("zoomReset");
                 });
+                $( "#zoomOutFull" ).click(function() {
+                  //alert( "Handler for .click() called." );
+                  document.getElementById("foo1").send("zoomOutFull");
+                });
+                 // A $( document ).ready() block.
 
+              //   $('.panel').lobiPanel({sortable:true});     
+              //  (function() {
 
-                            //$('.panel').lobiPanel({
-                //sortable: true
-            //});
-            var ready = false;
+                  // …
+            //    })();                               
+                                                       
 
-document.onreadystatechange = function() {
-
-    if (ready) {
-        return;
-    }
-    
-    // interactive = DOMContentLoaded & complete = window.load
-    if (document.readyState == 'interactive' || document.readyState == 'complete') {
-        ready = true;
-        
-        // init you code here
-        initPanel();
-    }
-};
             </script>
     <script>if (window.module) module = window.module;</script>
     </body>

@@ -1,4 +1,3 @@
-<!--Author     : @arboshiki-->
 <div id="dashboard" class="dashboard">
     <!--Nested LobiPanel example-->
     <div id="lobipanel-nested-examplex">
@@ -11,7 +10,7 @@
             <div class="panel-body">
                 <div class="row">
                 <div class="col-lg-6">
-                <div class="panel panel-light lobipanel">
+                <div class="panel panel-default">
                     <div class="panel-heading">
                         <div class="panel-title">
                             <h4>google</h4>
@@ -23,7 +22,7 @@
                 </div>
             </div>
                <div class="col-lg-6">
-                <div class="panel panel-light lobipanel">
+                <div class="panel panel-default">
                     <div class="panel-heading">
                         <div class="panel-title">
                             <h4>slack</h4>
@@ -35,66 +34,50 @@
                 </div>
                 </div>
             </div>
-                <div class="row">
-                    <div class="col-lg-3">
-                        <div class="panel panel-light lobipanel">
-                            <div class="panel-heading">
-                                <div class="panel-title">
-                                    <h4>google</h4>
-                                </div>
-                            </div>
-                            <div class="panel-body">
-                                <webview id="foo1" src="https://google.com" preload="js/webview-helper.js"></webview>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="panel panel-light lobipanel">
-                            <div class="panel-heading">
-                                <div class="panel-title">
-                                    <h4>google</h4>
-                                </div>
-                            </div>
-                            <div class="panel-body">
-                                <webview id="foo3" src="https://google.com" preload="js/webview-helper.js"></webview>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="panel panel-light lobipanel">
-                            <div class="panel-heading">
-                                <div class="panel-title">
-                                    <h4>google</h4>
-                                </div>
-                            </div>
-                            <div class="panel-body">
-                                <webview id="foo5" src="https://google.com" preload="js/webview-helper.js"></webview>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="panel panel-light lobipanel">
-                            <div class="panel-heading">
-                                <div class="panel-title">
-                                    <h4>google</h4>
-                                </div>
-                            </div>
-                            <div class="panel-body">
-                                <webview id="foo7" src="https://google.com" preload="js/webview-helper.js"></webview>
-                            </div>
-                        </div>
-                    </div>
+                <div id="data-body" class="row">
+
                 </div>
             </div>
         </div>
     </div>
 </div>
-    <!-- Insert this line above script imports  -->
+    
+
+
+   <script>
+        var panels = {
+                  "ce9cbee0-424e-4b23-a646-57d643a436cc": {
+                    "url": "https://google.com",
+                    "name": "mail"
+                  },
+                  "raa1a9a5-876c-4396-8904-8111791660f6": {
+                    "url": "https://google.com",
+                    "name": "mail"
+                  },
+                  "ed1687b8-3ac4-4457-8bba-a1e06f17f6c4": {
+                    "url": "https://google.com",
+                    "name": "mail"
+                  },
+                  "p0d81d23-87c3-4ece-91d2-785b140b4c1c": {
+                    "url": "https://google.com",
+                    "name": "mail"
+                  }
+                }
+
+// console.log(typeof panels);
+//function loopPanels(_location){
+// for(var propt in panels){
+//         console.log(propt + ': ' + panels[propt].url);
+//      }
+//     }
+//   loopPanels("");
+    </script>
+
+
     <script type="text/javascript">
             function initPage(){
                 //Initialize lobipanels
                 $('.panel').lobiPanel({
-                    editTitle: false,
                     reload: false,
                     sortable: true
                 });
@@ -102,30 +85,63 @@
                 $('#lobipanel-multiple .panel').lobiPanel({
                     sortable: true
                 });
-              //alert( "Handler for .click() called." );
-              //document.getElementById("foo1").send("zoomOutFull");
-              //console.log('set test')
             }
         initPage();
 
-                        $( document ).ready(function() {
-                    setTimeout(function(){
-                        document.getElementById('foo00').send("zoomOutFull-5.5");
-                        document.getElementById('foo01').send("zoomOutFull-5.5");
 
-                        document.getElementById('foo1').send("zoomOutFull-7.5");
-                        document.getElementById('foo2').send("zoomOutFull-7.5");
-                        document.getElementById('foo3').send("zoomOutFull-7.5");
-                        document.getElementById('foo4').send("zoomOutFull-7.5");
-                        document.getElementById('foo5').send("zoomOutFull-7.5");
+    $( document ).ready(function() {
+
+  var html = '';
+    var flag = 0;
+    $.each(panels, function(index, v){
+                    
+        html += '<div class="col-lg-3">';
+        html += '<div class="panel panel-default">';
+        html += '<div class="panel-heading">';
+        html += '<div class="panel-title">';
+        html += '<h4>'+v["name"]+'</h4>';
+        html += '</div>';
+        html += '</div>';
+        html += '<div class="panel-body">';
+        html += '<webview id="foo3" src="'+v["url"]+'" preload="js/webview-helper.js"></webview>';
+        html += '</div>';
+        html += '</div>';
+        html += '</div>';
+     });
+     //html += '</div>';
+     $('#data-body').append(html);
+
+          //const webview1 = document.getElementById('foo1');
+          //const indicator = document.querySelector('.indicator')
+      
+          //const loadstart = () => {
+          //  indicator.innerText = 'loading...'
+          //}
+      
+          //const loadstop = () => {
+            //indicator.innerText = ''
+          // document.getElementById('foo1').send("zoomOutFull-7.5");
+           //console.log('test');
+        // }
+  
+      //webview.addEventListener('did-start-loading', loadstart);
+     // webview1.addEventListener('did-stop-loading', loadstop);
+
+
+               //     setTimeout(function(){
+               //         document.getElementById('foo00').send("zoomOutFull-5.5");
+                //        document.getElementById('foo01').send("zoomOutFull-5.5");
+
+                        /*document.getElementById('foo1').send("zoomOutFull-7.5");*/
+                  //      document.getElementById('foo2').send("zoomOutFull-7.5");
+                   //     document.getElementById('foo3').send("zoomOutFull-7.5");
+                   //     document.getElementById('foo4').send("zoomOutFull-7.5");
+                        /*document.getElementById('foo5').send("zoomOutFull-7.5");
                         document.getElementById('foo6').send("zoomOutFull-7.5");
                         document.getElementById('foo7').send("zoomOutFull-7.5");
-                        document.getElementById('foo8').send("zoomOutFull-7.5");
-
-
-                    }, 1500);
-                    $('.panel').lobiPanel({sortable:true});                    // console.log( "ready!" );
-                });
+                        document.getElementById('foo8').send("zoomOutFull-7.5");*/
+     $('.panel').lobiPanel({sortable:true});                   
+     });
 
     </script>
 

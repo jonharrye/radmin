@@ -726,8 +726,8 @@
                         </a>
                         <ul>
                             <li>
-                                <a href="#form-basic-elements">
-                                    Basic Elements
+                                <a href="#json-editor-master/examples/advanced">
+                                JSON Editor
                                 </a>
                             </li>
                             <li>
@@ -1016,18 +1016,22 @@
         <!-- <script type="text/javascript" src="./js/demo.js"></script>
             Insert this line after script imports -->
             <script>
+
                 function initPanel(){
                       $('.panel').lobiPanel({sortable:true});                                    
                     }
 
                 //ensure its either a domain name if not, its a query for the default search engine
                 function addSitePanel(_url_){
-                    var html = '<div class="panel panel-default"><div class="panel-heading"><div class="panel-title"></div></div><div class="panel-body"><webview id="foo00" src="'+_url_+'" style="height:800px" preload="js/webview-helper.js"></webview></div></div>';
+                    var html = '<div class="panel panel-default"><div class="panel-heading"><div id="panel-title-01" class="panel-title"></div></div><div class="panel-body"><webview id="foo00" src="'+_url_+'" style="height:800px" preload="js/webview-helper.js"></webview></div></div>';
                     // update the main content area
                     var currentContent = $("#content").html();
                     $("#content").append(html);
+                    $("#content").append(html);
                     initPanel();
                 }
+
+
                 function validateDomainOrQuery() {
                     var sval = $("#search").val();
                     if (/^[a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-zA-Z0-9](?:\.[a-zA-Z]{2,})+$/.test(sval)) {
@@ -1062,14 +1066,7 @@
                   //alert( "Handler for .click() called." );
                   document.getElementById("foo1").send("zoomOutFull");
                 });
-                 // A $( document ).ready() block.
-
-              //   $('.panel').lobiPanel({sortable:true});     
-              //  (function() {
-
-                  // …
-            //    })();                               
-                                                       
+                                               
 
             </script>
     <script>if (window.module) module = window.module;</script>

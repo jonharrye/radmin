@@ -43,7 +43,7 @@
                 <ul class="nav navbar-nav navbar-right user-actions">
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <img class="user-avatar" src="img/users/me-160.jpg" alt="..."/>
+                        <span class="glyphicon glyphicon-user"></span>
                             <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu">
@@ -58,8 +58,7 @@
                 </ul>
             </div>
             <div class="clearfix-xxs"></div>
-            <div class="navbar-items-2">
-                <!--Choose languages dropdown-->
+          <!--  <div class="navbar-items-2">
                 <ul class="nav navbar-nav">
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -361,7 +360,7 @@
                         </div>
                     </li>
                 </ul>
-            </div>
+            </div> -->
             <div class="clearfix"></div>
         </nav>
         <div class="menu">
@@ -402,13 +401,36 @@
                         </a>
                         <ul>
                             <li>
-                                <a href="#dashboards">
-                                    <span class="inner-text">Dashboards</span>
+                        <a href="#">
+                            <i class="fa fa-area-chart menu-item-icon"></i>
+                            <span class="inner-text">Dashboards</span>
+                        </a>
+                        <ul>
+                            <li>
+                                <a href="#mail">
+                                    <span class="inner-text">Mail</span>
                                 </a>
                             </li>
                             <li>
+                                <a href="#docs">
+                                    <span class="inner-text">Docs</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#calendar">
+                                    <span class="inner-text">Calendar</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                            <li>
                                 <a href="#websites">
                                     <span class="inner-text">Websites</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#profile">
+                                    Profile
                                 </a>
                             </li>
                         </ul>
@@ -851,11 +873,6 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#profile">
-                                    Profile
-                                </a>
-                            </li>
-                            <li>
                                    <div> 
         Current Zoom: <span style="font-weight: bold;" id="current-value"></span>
             <br />
@@ -904,7 +921,7 @@
             </div>
             <form action class="lobi-form">
                 <fieldset>
-                    <header>LobiAdmin Settings</header>
+                    <header>Settings</header>
                     <div class="form-group">
                         <label class="checkbox-inline lobicheck lobicheck-rounded">
                             Header fixed

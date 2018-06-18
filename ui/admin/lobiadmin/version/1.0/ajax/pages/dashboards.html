@@ -1,0 +1,79 @@
+<!--Author      : @arboshiki-->
+<div id="lobipanel-documentation">
+    <div id="lobipanel-nested-example">
+        <div class="panel panel-info lobipanel">
+            <div class="panel-heading">
+                <div class="panel-title">
+                    <h4>Title</h4>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="panel panel-warning lobipanel">
+                    <div class="panel-heading">
+                        <div class="panel-title">
+                            <h4>Title</h4>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                    Content
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="panel panel-light lobipanel" data-sortable="true">
+                            <div class="panel-heading">
+                                <div class="panel-title">
+                                    <h4>Title</h4>
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                Content
+                            </div>
+                        </div>
+                        <div class="panel panel-light lobipanel" data-sortable="true">
+                            <div class="panel-heading">
+                                <div class="panel-title">
+                                    <h4>Title</h4>
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                Content
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="panel panel-light lobipanel" data-sortable="true">
+                            <div class="panel-heading">
+                                <div class="panel-title">
+                                    <h4>Title</h4>
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                Content
+                            </div>
+                        </div>
+                        <div class="panel panel-light lobipanel" data-sortable="true">
+                            <div class="panel-heading">
+                                <div class="panel-title">
+                                    <h4>Title</h4>
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                Content
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">        
+        function initPage(){
+            $('.lobipanel').lobiPanel({sortable: true});
+            $('#lobipanel-multiple .panel').lobiPanel({
+                sortable: true
+            });
+        }
+        initPage();
+    </script>
+</div>

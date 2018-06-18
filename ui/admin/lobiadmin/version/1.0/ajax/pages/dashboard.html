@@ -43,25 +43,65 @@
 </div>
     
 <script>
-    var panels = {
-        "ce9cbee0-424e-4b23-a646-57d643a436cc": {
-            "url": "https://google.com",
-            "name": "mail"
-        },
-        "raa1a9a5-876c-4396-8904-8111791660f6": {
-            "url": "https://google.com",
-            "name": "mail"
-        },
-        "ed1687b8-3ac4-4457-8bba-a1e06f17f6c4": {
-            "url": "https://google.com",
-            "name": "mail"
-        },
-        "p0d81d23-87c3-4ece-91d2-785b140b4c1c": {
-            "url": "https://google.com",
-            "name": "mail"
-        }
-    }
 
+'use strict';
+
+//let jsonData = require('./foo.json');
+
+//console.log(jsonData);  
+
+    var panels = {
+  "ce9cbee0-424e-4b23-a646-57d643a436cc": {
+    "url": "https://google.com",
+    "sitename": "mail",
+    "panel-size": "3C"
+  },
+  "raa1a9a5-876c-4396-8904-8111791660f6": {
+    "url": "https://csubs.slack.com/messages",
+    "sitename": "mail",
+    "panel-size": "3C"
+  },
+  "ed1687b8-3ac4-4457-8bba-a1e06f17f6c4": {
+    "url": "https://google.com",
+    "sitename": "mail",
+    "panel-size": "3C"
+  },
+  "p0d81d23-87c3-4ece-91d2-785b140b4c1c": {
+    "url": "https://google.com",
+    "sitename": "mail",
+    "panel-size": "3C"
+  },
+  "r5060078-6878-4673-a1ec-c5b8166a0a61": {
+    "url": "https://bing.com",
+    "sitename": "bing",
+    "panel-size": "3C"
+  },
+  "ze9cbee0-424e-4b23-a646-57d643a436cc": {
+    "url": "https://google.com",
+    "sitename": "mail",
+    "panel-size": "3C"
+  },
+  "caa1a9a5-876c-4396-8904-8111791660f6": {
+    "url": "https://csubs.slack.com/messages",
+    "sitename": "mail",
+    "panel-size": "3C"
+  },
+  "vd1687b8-3ac4-4457-8bba-a1e06f17f6c4": {
+    "url": "https://google.com",
+    "sitename": "mail",
+    "panel-size": "3C"
+  },
+  "b0d81d23-87c3-4ece-91d2-785b140b4c1c": {
+    "url": "https://google.com",
+    "sitename": "mail",
+    "panel-size": "3C"
+  },
+  "h5060078-6878-4673-a1ec-c5b8166a0a61": {
+    "url": "https://bing.com",
+    "sitename": "bing",
+    "panel-size": "3C"
+  }
+}
     function initPage() {
         //Initialize lobipanels
         $('.panel').lobiPanel({
@@ -78,17 +118,19 @@
 
         var html = '';
         var flag = 0;
-        $.each(panels, function(index, v) {
+        $.each(panels, function(index, values) {
+
+            console.log(index);
 
             html += '<div class="col-lg-3">';
             html += '<div class="panel panel-default">';
             html += '<div class="panel-heading">';
             html += '<div class="panel-title">';
-            html += '<h4>' + v["name"] + '</h4>';
+            html += '<h4>' + values["sitename"] + '</h4>';
             html += '</div>';
             html += '</div>';
             html += '<div class="panel-body">';
-            html += '<webview id="' + index + '" src="' + v["url"] + '" preload="js/webview-helper.js"></webview>';
+            html += '<webview id="' + index + '" src="' + values["url"] + '" preload="js/webview-helper.js"></webview>';
             html += '</div>';
             html += '</div>';
             html += '</div>';
@@ -101,30 +143,30 @@
         $('.panel').lobiPanel({
             sortable: true
         });
-
     });
 
     function setPropertyWV(_index) {
-
-
         var el = document.getElementById(_index);
-        console.log(_index);
-
         //html += '</div>';
         /// const el = document.getElementById(index);
         //const indicator = document.querySelector('.indicator')
-
         //const loadstart = () => {
         //  indicator.innerText = 'loading...'
         //}
-
         const loadstop = () => {
             //indicator.innerText = ''
             document.getElementById(_index).send("zoomOutFull-7.5");
-            //console.log('test');
         }
-
         el.addEventListener('did-stop-loading', loadstop);
-
     }
+
+
+     var remote = require('electron').remote;     
+     console.log(remote.getGlobal('sharedObj')); 
+     console.log('test');    
+
+     //remote.getGlobal('sharedObj').prop1 = 125;     
+
+     //var ipcRenderer = require('electron').ipcRenderer;     
+     //ipcRenderer.send('show-prop1');
 </script>

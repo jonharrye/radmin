@@ -2,6 +2,29 @@
 const electron = require('electron')
 const {app, BrowserWindow} = electron
 
+'use strict';
+
+const fs = require('fs');
+var ipcMain = require('electron').ipcMain;
+
+fs.readFile('foo.json', (err, data) => {  
+    if (err) throw err;
+    //let student = JSON.parse(data);
+    global.sharedObj = JSON.parse(data);
+    //console.log(student);
+});
+
+ipcMain.on('show-prop1', function(event) {
+ // console.log(global.sharedObj.prop1);
+});
+
+
+
+
+    //console.log(student);
+
+console.log('This is after the read call');  
+
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow

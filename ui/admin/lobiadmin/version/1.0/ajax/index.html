@@ -1060,6 +1060,7 @@
                       console.log(($("#panel-title").html()));
                       console.log(typeof($("#panel-title").html()));
                     });
+
                 }
                 //update the url for the webview panel
                 function updateSitePanel(_url_){
@@ -1086,6 +1087,18 @@
                         //return false;
                     }
                 }
+                $("body").on('DOMSubtreeModified', "#panel-title", function() {
+                    console.log("boom boom boom");
+                    if (($("#panel-title").html()).indexOf("<input") >= 0){
+                        console.log('is a string with input in the string')
+                      console.log(($("#panel-title").html()));
+                    }else{
+                    console.log(($("#panel-title").html()));
+                    console.log('navigate bioooootch!');
+                    updateSitePanel(($("#panel-title").html()));
+
+                    }
+                });
                 $("#search").on('keyup', function (e) {
                     if (e.keyCode == 13) {
                         validateDomainOrQuery();

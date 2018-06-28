@@ -1,0 +1,29 @@
+{
+  "name": "gridmanager",
+  "title": "jQuery GridManager",
+  "description": "A way of building rows and grids with built in editable regions; requires jQuery, jQueryUI, Bootstrap 3.x, TinyMCE or CKEditor",
+  "version": "0.3.1",
+  "homepage": "http://neokoenig.github.io/jQuery-gridmanager/",
+  "author": {
+    "name": "Tom King",
+    "url": "http://www.oxalto.co.uk"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/neokoenig/jQuery-gridmanager.git"
+  },
+  "demo": "http://neokoenig.github.io/jQuery-gridmanager/demo/",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://opensource.org/licenses/MIT"
+    }
+  ],
+  "dependencies": {
+    "jquery": "~1.11.0"
+  },
+  "keywords": [
+    "jquery-plugin",
+    "ui"
+  ]
+}

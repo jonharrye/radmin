@@ -113,9 +113,7 @@
             sortable: true
         });
     }
-    initPage();
-    $(document).ready(function() {
-
+    function addPanel(){
         var html = '';
         var flag = 0;
         $.each(panels, function(index, values) {
@@ -143,6 +141,10 @@
         $('.panel').lobiPanel({
             sortable: true
         });
+    }
+    $(document).ready(function() {
+        initPage();
+        addPanel();
     });
 
     function setPropertyWV(_index) {
@@ -159,7 +161,6 @@
         }
         el.addEventListener('did-stop-loading', loadstop);
     }
-
 
      var remote = require('electron').remote;     
      console.log(remote.getGlobal('sharedObj')); 

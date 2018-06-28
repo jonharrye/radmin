@@ -1,0 +1,51 @@
+ <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Fluid - Gridmanager Development</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">  
+
+    <link href="css/bootstrap.css" rel="stylesheet">    
+    <link href="../dist/css/jquery.gridmanager.css" rel="stylesheet">  
+    <link href="css/demo.css" rel="stylesheet">  
+     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+ 
+    <script src="js/jquery.js"></script> 
+    <script src="js/jquery-ui.js"></script> 
+    <script src="js/bootstrap.js"></script> 
+    <script src="../dist/js/jquery.gridmanager.js"></script> 
+ 
+  </head>
+<body> 
+
+
+ 
+<div class="container-fluid">  
+    <div id="mycanvas">  
+
+    </div> 
+</div> 
+ 
+<!--================== JS ================--> 
+<script> 
+$(document).ready(function(){  
+
+   $("#mycanvas").gridmanager({ 
+        controlPrepend: "<div class='row-fluid'><div class='col-md-12'><div id='gm-addnew' class='btn-group '>", 
+        // Row Specific
+          rowClass:    "row-fluid",
+        rowSelector: "div.row-fluid",
+        rowPrepend:  "<div class='row-fluid gm-editing'>"
+    }   );
+
+   
+});
+</script> 
+</body>
+</html>
+  

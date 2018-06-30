@@ -1,745 +1,226 @@
 <!DOCTYPE html>
 <html>
 <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-   <title>{r-admin}</title>
-   <link rel="shortcut icon" href="img/logo/lobiadmin-logo-16.ico" />
-   <link rel="stylesheet" href="css/bootstrap.min.css">
-   <link rel="stylesheet" href="css/font-awesome.min.css" />
-   <link rel="stylesheet" href="css/weather-icons.min.css" />
-   <!--lobiadmin-with-plugins.css contains all LobiAdmin css plus lobiplugins all css files, plus third party plugins-->
-   <link rel="stylesheet" href="css/lobiadmin-with-plugins.css" />
-   <!--Put custom css here-->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>{r-admin}</title>
+<link rel="shortcut icon" href="img/logo/lobiadmin-logo-16.ico" />
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/font-awesome.min.css" />
+<link rel="stylesheet" href="css/weather-icons.min.css" />
+<!--lobiadmin-with-plugins.css contains all LobiAdmin css plus lobiplugins all css files, plus third party plugins-->
+<link rel="stylesheet" href="css/lobiadmin-with-plugins.css" />
+<!--Put custom css here-->
+
 </head>
 <body>
-   <nav class="navbar navbar-default navbar-header header">
-      <a class="navbar-brand" href="#" style="color: #fff">{r-admin}</a>
-      <!--Menu show/hide toggle button-->
-      <ul class="nav navbar-nav pull-left show-hide-menu">
-         <li>
-            <a href="#" class="border-radius-0 btn font-size-lg" data-action="show-hide-sidebar">
-                <i class="fa fa-bars"></i>
-            </a>
-         </li>
+<nav class="navbar navbar-default navbar-header header"> <a class="navbar-brand" href="#" style="color: #fff">{r-admin}</a> 
+  <!--Menu show/hide toggle button-->
+  <ul class="nav navbar-nav pull-left show-hide-menu">
+    <li> <a href="#" class="border-radius-0 btn font-size-lg" data-action="show-hide-sidebar"> <i class="fa fa-bars"></i> </a> </li>
+  </ul>
+  <div class="navbar-search pull-left">
+    <label for="search" class="sr-only">Search...</label>
+    <input type="text" class="font-size-lg" name="search" id="search" placeholder="Search...">
+    <a class="btn btn-search"> <span class="glyphicon glyphicon-search"></span> </a> <a class="btn btn-remove"> <span class="glyphicon glyphicon-remove"></span> </a> </div>
+  <div class="navbar-items"> 
+    <!--User avatar dropdown-->
+    <ul class="nav navbar-nav navbar-right user-actions">
+      <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <span class="glyphicon glyphicon-user"></span> <b class="caret"></b> </a>
+        <ul class="dropdown-menu">
+          <li><a href="#profile"><span class="glyphicon glyphicon-user"></span> &nbsp;&nbsp;Profile</a></li>
+          <li><a href="#timeline"><i class="fa fa-code-fork"></i> &nbsp;&nbsp;Timeline</a></li>
+          <li><a href="#lobimail"><span class="glyphicon glyphicon-envelope"></span> &nbsp;&nbsp;Messages</a></li>
+          <li class="divider"></li>
+          <li><a href="lock.html"><span class="glyphicon glyphicon-lock"></span> &nbsp;&nbsp;Lock screen</a></li>
+          <li><a href="login.html"><span class="glyphicon glyphicon-off"></span> &nbsp;&nbsp;Log out</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <div class="clearfix"></div>
+</nav>
+<div class="menu">
+  <div class="menu-heading">
+    <div class="menu-header-buttons-wrapper clearfix">
+      <button type="button" class="btn btn-info btn-menu-header-collapse"> <i class="fa fa-cogs"></i> </button>
+      <!--Put your favourite pages here-->
+      <div class="menu-header-buttons"> <a href="#profile" class="btn btn-info btn-outline" data-title="Profile"> <i class="fa fa-user"></i> </a> <a href="#jQuery-gridmanager-master/demo/layout-editor" class="btn btn-info btn-outline" data-title="Invoice"> <i class="fa fa-file-pdf-o"></i> </a> <a href="#lobimail" class="btn btn-info btn-outline" data-title="Inbox"> <i class="fa fa-envelope"></i> </a> <a href="#calendar" class="btn btn-info btn-outline" data-title="Calendar"> <i class="fa fa-calendar"></i> </a> </div>
+    </div>
+  </div>
+  <nav>
+    <ul>
+      <li> <a href="#dashboard"> <i class="fa fa-home menu-item-icon"></i> <span class="inner-text">Dashboard</span> </a> </li>
+      <li> <a href="#"> <i class="fa fa-share-alt menu-item-icon"></i> <span class="inner-text">Manage</span> </a>
+        <ul>
+          <li> <a href="#"> <i class="fa fa-area-chart menu-item-icon"></i> <span class="inner-text">Dashboards</span> </a>
+            <ul>
+              <li> <a href="#jQuery-gridmanager-master/demo/layout-editor"> <span class="inner-text">New</span> </a> </li>
+              <li> <a href="#mail"> <span class="inner-text">Mail</span> </a> </li>
+              <li> <a href="#docs"> <span class="inner-text">Docs</span> </a> </li>
+              <li> <a href="#calendar"> <span class="inner-text">Calendar</span> </a> </li>
+            </ul>
+          </li>
+          <li> <a href="#websites"> <span class="inner-text">Websites</span> </a> </li>
+        </ul>
+      </li>
+      <li>
+      <a href="#"> <i class="fa fa-pencil-square-o menu-item-icon"></i> <span class="inner-text">Api Docs</span> </a>
+      <ul>
+        <li> <a href="#"> <i class="fa fa-file-o menu-item-icon"></i> <span class="inner-text">Extra</span> </a>
+          <ul>
+            <li>
+              <div> Current Zoom: <span style="font-weight: bold;" id="current-value"></span> <br />
+                <button id="zoomOut" class="btn btn-info btn-block btn-pretty btn-sm" style="width:12px;">Block button</button>
+                <button id="zoomIn" class="btn btn-info btn-block btn-pretty btn-sm" style="width:12px;">Block button</button>
+                <button id="zoomReset" class="btn btn-info btn-block btn-pretty btn-sm" style="width:12px;">Block button</button>
+                <button id="zoomOutFull" class="btn btn-info btn-block btn-pretty btn-sm" style="width:12px;">Full Out</button>
+              </div>
+            </li>
+            <li>
+              <textarea id="content-editor" rows="5" cols="5"></textarea>
+              <input type="button" value="Open" id="select-file"/>
+              <input type="button" id="save-changes" value="Save"/>
+              <input type="button" value="Save As" id="create-new-file"/>
+              <input type="button" id="delete-file" value="Delete"/>
+              <input type="text" placeholder="Please select a file" id="actual-file" disabled="disabled" style="visibility: hidden;"/>
+            </li>
+          </ul>
+        </li>
       </ul>
-      <div class="navbar-search pull-left">
-         <label for="search" class="sr-only">Search...</label>
-         <input type="text" class="font-size-lg" name="search" id="search" placeholder="Search...">
-         <a class="btn btn-search">
-                    <span class="glyphicon glyphicon-search"></span>
-                </a>
-         <a class="btn btn-remove">
-                    <span class="glyphicon glyphicon-remove"></span>
-                </a>
+      </li>
+    </ul>
+  </nav>
+  <div class="menu-collapse-line"> 
+    <!--Menu collapse/expand icon is put and control from LobiAdmin.js file-->
+    <div class="menu-toggle-btn" data-action="collapse-expand-sidebar"></div>
+  </div>
+</div>
+<div id="main">
+  <div id="ribbon" class="hidden-print"> <a href="#dashboard" class="btn-ribbon" data-container="#main" data-toggle="tooltip" data-title="Show dashboard"><i class="fa fa-home"></i></a> <span class="vertical-devider">&nbsp;</span>
+    <button class="btn-ribbon" data-container="#main" data-action="reload" data-toggle="tooltip" data-title="Reload content by ajax"><i class="fa fa-refresh"></i></button>
+    <ol class="breadcrumb">
+    </ol>
+  </div>
+  <div id="content"> </div>
+</div>
+</div>
+<!--Setting box-->
+<div class="setting-box hidden-print">
+  <div class="btn-toggle"> <span class="glyphicon glyphicon-cog"></span> </div>
+  <form action class="lobi-form">
+    <fieldset>
+      <header>Settings</header>
+      <div class="form-group">
+        <label class="checkbox-inline lobicheck lobicheck-rounded"> Header fixed
+          <input type="checkbox" class="fix-header" value="1">
+          <i></i> </label>
       </div>
-      <div class="navbar-items">
-         <!--User avatar dropdown-->
-         <ul class="nav navbar-nav navbar-right user-actions">
-            <li class="dropdown">
-               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <span class="glyphicon glyphicon-user"></span>
-                            <b class="caret"></b>
-                        </a>
-               <ul class="dropdown-menu">
-                  <li><a href="#profile"><span class="glyphicon glyphicon-user"></span> &nbsp;&nbsp;Profile</a></li>
-                  <li><a href="#timeline"><i class="fa fa-code-fork"></i> &nbsp;&nbsp;Timeline</a></li>
-                  <li><a href="#lobimail"><span class="glyphicon glyphicon-envelope"></span> &nbsp;&nbsp;Messages</a></li>
-                  <li class="divider"></li>
-                  <li><a href="lock.html"><span class="glyphicon glyphicon-lock"></span> &nbsp;&nbsp;Lock screen</a></li>
-                  <li><a href="login.html"><span class="glyphicon glyphicon-off"></span> &nbsp;&nbsp;Log out</a></li>
-               </ul>
-            </li>
-         </ul>
+      <div class="form-group">
+        <label class="checkbox-inline lobicheck lobicheck-rounded"> Menu fixed
+          <input type="checkbox" class="fix-menu">
+          <i></i> </label>
       </div>
-      <div class="clearfix"></div>
-   </nav>
-   <div class="menu">
-      <div class="menu-heading">
-         <div class="menu-header-buttons-wrapper clearfix">
-            <button type="button" class="btn btn-info btn-menu-header-collapse">
-                        <i class="fa fa-cogs"></i>
-                    </button>
-            <!--Put your favourite pages here-->
-            <div class="menu-header-buttons">
-               <a href="#profile" class="btn btn-info btn-outline" data-title="Profile">
-                            <i class="fa fa-user"></i>
-                        </a>
-               <a href="#jQuery-gridmanager-master/demo/simple_light" class="btn btn-info btn-outline" data-title="Invoice">
-                            <i class="fa fa-file-pdf-o"></i>
-                        </a>
-               <a href="#lobimail" class="btn btn-info btn-outline" data-title="Inbox">
-                            <i class="fa fa-envelope"></i>
-                        </a>
-               <a href="#calendar" class="btn btn-info btn-outline" data-title="Calendar">
-                            <i class="fa fa-calendar"></i>
-                        </a>
-            </div>
-         </div>
+      <div class="form-group">
+        <label class="checkbox-inline lobicheck lobicheck-rounded"> Ribbon fixed
+          <input type="checkbox" class="fix-ribbon">
+          <i></i> </label>
       </div>
-      <nav>
-         <ul>
-            <li>
-               <a href="#dashboard">
-                            <i class="fa fa-home menu-item-icon"></i>
-                            <span class="inner-text">Dashboard</span>
-                        </a>
-            </li>
-            <li>
-               <a href="#">
-                            <i class="fa fa-share-alt menu-item-icon"></i>
-                            <span class="inner-text">Manage</span>
-                        </a>
-               <ul>
-                  <li>
-                     <a href="#">
-                            <i class="fa fa-area-chart menu-item-icon"></i>
-                            <span class="inner-text">Dashboards</span>
-                        </a>
-                     <ul>
-
-                        <li>
-                           <a href="#jQuery-gridmanager-master/demo/simple_light">
-                                    <span class="inner-text">New Dashboard</span>
-                                </a>
-                        </li>
-                        <li>
-                           <a href="#mail">
-                                    <span class="inner-text">Mail</span>
-                                </a>
-                        </li>
-                        <li>
-                           <a href="#docs">
-                                    <span class="inner-text">Docs</span>
-                                </a>
-                        </li>
-                        <li>
-                           <a href="#calendar">
-                                    <span class="inner-text">Calendar</span>
-                                </a>
-                        </li>
-                     </ul>
-                  </li>
-                  <li>
-                     <a href="#websites">
-                                    <span class="inner-text">Websites</span>
-                                </a>
-                  </li>
-                  <li>
-                     <a href="#profile">
-                                    Profile
-                                </a>
-                  </li>
-               </ul>
-            </li>
-            <li>
-               <a href="#">
-                            <i class="fa fa-pencil-square-o menu-item-icon"></i>
-                            <span class="inner-text">Api Docs</span>
-                        </a>
-               <ul>
-                  <li>
-                     <a href="#json-editor-master/examples/advanced">
-                                JSON Editor
-                                </a>
-                  </li>
-                  <li>
-                     <a href="#form-custom-elements">
-                                    Custom Elements
-                                </a>
-                  </li>
-                  <li>
-                     <a href="#form-plugins">
-                                    Form Plugins
-                                </a>
-                  </li>
-                  <li>
-                     <a href="#form-layouts">
-                                    Form Layouts
-                                </a>
-                  </li>
-                  <li>
-                     <a href="#form-validation">
-                                    Form Validation
-                                </a>
-                  </li>
-                  <li>
-                     <a href="#wizard">
-                                    Wizards
-                                </a>
-                  </li>
-                  <li>
-                     <a href="#editor">
-                                    WYSIWYG Editor
-                                </a>
-                  </li>
-                  <li>
-                     <a href="#file-upload">
-                                    File Upload
-                                </a>
-                  </li>
-                  <li>
-                     <a href="#image-cropping">
-                                    Image cropping
-                                </a>
-                  </li>
-                  <li>
-                     <a href="#lobipanel">
-                                    <span class="inner-text">LobiPanel</span>
-                                </a>
-                  </li>
-                  <li>
-                     <a href="#lobibox">
-                                    <span class="inner-text">LobiBox</span>
-                                </a>
-                  </li>
-                  <li>
-                     <a href="#lobitab">
-                                    <span class="inner-text">LobiTab</span>
-                                </a>
-                  </li>
-                  <li>
-                     <a href="#lobilist">
-                                    <span class="inner-text">LobiList</span>
-                                </a>
-                  </li>
-                  <li>
-                     <a href="#">
-                            <i class="fa fa-area-chart menu-item-icon"></i>
-                            <span class="inner-text">Graphs</span>
-                        </a>
-                     <ul>
-                        <li>
-                           <a href="#chartjs">
-                                    <span class="inner-text">Chart.js</span>
-                                </a>
-                        </li>
-                        <li>
-                           <a href="#morrisjs">
-                                    <span class="inner-text">Morris Charts</span>
-                                </a>
-                        </li>
-                        <li>
-                           <a href="#inline-charts">
-                                    <span class="inner-text">Inline Charts</span>
-                                </a>
-                        </li>
-                     </ul>
-                     <li>
-                        <a href="#">
-                            <i class="fa fa-table menu-item-icon"></i>
-                            <span class="inner-text">Tables</span>
-                        </a>
-                        <ul>
-                           <li>
-                              <a href="#basic-tables">
-                                    <span class="inner-text">Basic Tables</span>
-                                </a>
-                           </li>
-                           <li>
-                              <a href="#data-tables">
-                                    <span class="inner-text">Data Tables</span>
-                                </a>
-                           </li>
-                        </ul>
-                     </li>
-                  </li>
-                  <li>
-                     <a href="#">
-                            <i class="fa fa-list-alt menu-item-icon"></i>
-                            <span class="inner-text">UI Elements</span>
-                        </a>
-                     <ul>
-                        <li>
-                           <a href="#default-elements">
-                                    Default Elements
-                                </a>
-                        </li>
-                        <li>
-                           <a href="#">
-                                    <span class="inner-text">Icons</span>
-                                </a>
-                           <ul>
-                              <li>
-                                 <a href="#glyphicon">
-                                            <i class="glyphicon glyphicon-cloud-download"></i>
-                                            <span class="inner-text">Glyphicon</span>
-                                        </a>
-                              </li>
-                              <li>
-                                 <a href="#font-awesome">
-                                            <i class="fa fa-flag menu-item-icon"></i>
-                                            <span class="inner-text">Font Awesome</span>
-                                        </a>
-                              </li>
-                              <li>
-                                 <a href="#weather-icons">
-                                            <i class="wi wi-cloudy menu-item-icon"></i>
-                                            <span class="inner-text">Weather icons</span>
-                                        </a>
-                              </li>
-                           </ul>
-
-                        </li>
-                        <li>
-                           <a href="#typography">
-                                    Typography
-                                </a>
-                        </li>
-                        <li>
-                           <a href="#buttons">
-                                    Buttons
-                                </a>
-                        </li>
-                        <li>
-                           <a href="#tiles">
-                                    Tiles
-                                </a>
-                        </li>
-                        <li>
-                           <a href="#discount-labels">
-                                    Discount labels
-                                </a>
-                        </li>
-                        <li>
-                           <a href="#treeview">
-                                    Treeview
-                                </a>
-                        </li>
-                        <li>
-                           <a href="#">
-                                    Six Level Menu
-                                </a>
-                           <ul>
-                              <li>
-                                 <a href="#">
-                                            Third level menu
-                                        </a>
-                                 <ul>
-                                    <li>
-                                       <a href="#">
-                                                    Fourth level
-                                                </a>
-                                       <ul>
-                                          <li>
-                                             <a href="#">
-                                                            Fifth level
-                                                        </a>
-                                             <ul>
-                                                <li>
-                                                   <a href="#">
-                                                                    Sixth level
-                                                                </a>
-                                                </li>
-                                                <li>
-                                                   <a href="#">
-                                                                    Sixth level
-                                                                </a>
-                                                </li>
-                                             </ul>
-                                          </li>
-                                          <li>
-                                             <a href="#">
-                                                            Fifth level
-                                                        </a>
-                                             <ul>
-                                                <li>
-                                                   <a href="#">
-                                                                    Sixth level
-                                                                </a>
-                                                </li>
-                                                <li>
-                                                   <a href="#">
-                                                                    Sixth level
-                                                                </a>
-                                                </li>
-                                             </ul>
-                                          </li>
-                                       </ul>
-
-                                    </li>
-                                    <li>
-                                       <a href="#">
-                                                    Fourth level
-                                                </a>
-                                       <ul>
-                                          <li>
-                                             <a href="#">
-                                                            Fifth level
-                                                        </a>
-                                             <ul>
-                                                <li>
-                                                   <a href="#">
-                                                                    Sixth level
-                                                                </a>
-                                                </li>
-                                                <li>
-                                                   <a href="#">
-                                                                    Sixth level
-                                                                </a>
-                                                </li>
-                                             </ul>
-                                          </li>
-                                          <li>
-                                             <a href="#">
-                                                            Fifth level
-                                                        </a>
-                                             <ul>
-                                                <li>
-                                                   <a href="#">
-                                                                    Sixth level
-                                                                </a>
-                                                </li>
-                                                <li>
-                                                   <a href="#">
-                                                                    Sixth level
-                                                                </a>
-                                                </li>
-                                             </ul>
-                                          </li>
-                                       </ul>
-                                    </li>
-                                 </ul>
-
-                              </li>
-                              <li>
-                                 <a href="#">
-                                            Third level menu
-                                        </a>
-                                 <ul>
-                                    <li>
-                                       <a href="#">
-                                                    Fourth level
-                                                </a>
-                                       <ul>
-                                          <li>
-                                             <a href="#">
-                                                            Fifth level
-                                                        </a>
-                                             <ul>
-                                                <li>
-                                                   <a href="#">
-                                                                    Sixth level
-                                                                </a>
-                                                </li>
-                                                <li>
-                                                   <a href="#">
-                                                                    Sixth level
-                                                                </a>
-                                                </li>
-                                             </ul>
-                                          </li>
-                                          <li>
-                                             <a href="#">
-                                                            Fifth level
-                                                        </a>
-                                             <ul>
-                                                <li>
-                                                   <a href="#">
-                                                                    Sixth level
-                                                                </a>
-                                                </li>
-                                                <li>
-                                                   <a href="#">
-                                                                    Sixth level
-                                                                </a>
-                                                </li>
-                                             </ul>
-                                          </li>
-                                       </ul>
-                                    </li>
-                                    <li>
-                                       <a href="#">
-                                                    Fourth level
-                                                </a>
-                                       <ul>
-                                          <li>
-                                             <a href="#">
-                                                            Fifth level
-                                                        </a>
-                                             <ul>
-                                                <li>
-                                                   <a href="#">
-                                                                    Sixth level
-                                                                </a>
-                                                </li>
-                                                <li>
-                                                   <a href="#">
-                                                                    Sixth level
-                                                                </a>
-                                                </li>
-                                             </ul>
-                                          </li>
-                                          <li>
-                                             <a href="#jQuery-gridmanager-master/demo/simple_light">
-                                                            Fifth level
-                                                        </a>
-                                             <ul>
-                                                <li>
-                                                   <a href="#../BootstrapGenerator/index">
-                                                                    Sixth level
-                                                                </a>
-                                                </li>
-                                                <li>
-                                                   <a href="./BootstrapGenerator/index.html">
-                                                                    Sixth level
-                                                                </a>
-                                                </li>
-                                             </ul>
-                                          </li>
-                                       </ul>
-                                    </li>
-                                 </ul>
-
-                              </li>
-                           </ul>
-
-                        </li>
-                     </ul>
-                  </li>
-                  <li>
-                     <a href="#grid">
-                            <i class="fa fa-laptop menu-item-icon"></i>
-                            <span class="inner-text">Grid options</span>
-                        </a>
-                  </li>
-                  <li>
-                     <a href="#mail-templates">
-                            <i class="fa fa-envelope-o menu-item-icon"></i>
-                            <span class="inner-text">Mail templates</span>
-                        </a>
-                  </li>
-                  <li>
-                     <a href="#calendar">
-                            <i class="fa fa-calendar menu-item-icon"></i>
-                            <span class="inner-text">Calendar</span>
-                            <span class="badge-wrapper"><span class="badge badge-xs badge-info">12</span></span>
-                        </a>
-                  </li>
-                  <li>
-                     <a href="#lobimail">
-                            <i class="fa fa-envelope menu-item-icon"></i>
-                            <span class="inner-text">Inbox</span>
-                            <span class="badge-wrapper"><span class="badge badge-xs badge-danger">7</span></span>
-                        </a>
-                  </li>
-                  <li>
-                     <a href="#">
-                            <i class="fa fa-file-o menu-item-icon"></i>
-                            <span class="inner-text">Extra</span>
-                        </a>
-                     <ul>
-                        <li>
-                           <a href="#error-404">
-                                    Page 404
-                                </a>
-                        </li>
-                        <li>
-                           <a href="#error-500">
-                                    Page 500
-                                </a>
-                        </li>
-                        <li>
-                           <a href="lock.html">
-                                    Lock Screen
-                                </a>
-                        </li>
-                        <li>
-                           <a href="login.html">
-                                    Login & Register
-                                </a>
-                        </li>
-                        <li>
-                           <a href="#helper">
-                                    Helper Classes
-                                </a>
-                        </li>
-                        <li>
-                           <a href="#pricing-tables">
-                                    Pricing tables
-                                </a>
-                        </li>
-                        <li>
-                           <a href="#timeline">
-                                    Timeline
-                                </a>
-                        </li>
-                        <li>
-                           <a href="#invoice">
-                                    Invoice
-                                </a>
-                        </li>
-                        <li>
-                           <div>
-                              Current Zoom: <span style="font-weight: bold;" id="current-value"></span>
-                              <br />
-                              <button id="zoomOut" class="btn btn-info btn-block btn-pretty btn-sm" style="width:12px;">Block button</button>
-                              <button id="zoomIn" class="btn btn-info btn-block btn-pretty btn-sm" style="width:12px;">Block button</button>
-                              <button id="zoomReset" class="btn btn-info btn-block btn-pretty btn-sm" style="width:12px;">Block button</button>
-                              <button id="zoomOutFull" class="btn btn-info btn-block btn-pretty btn-sm" style="width:12px;">Full Out</button>
-                           </div>
-                        </li>
-                        <li>
-                                    <textarea id="content-editor" rows="5" cols="5"></textarea><br>
-          <input type="button" id="save-changes" value="Save"/>
-          <input type="button" id="delete-file" value="Delete"/>
-            <input type="button" value="Save As" id="create-new-file"/>  
-            <input type="text" placeholder="Please select a file" id="actual-file" disabled="disabled" style="visibility: hidden;"/>
-<input type="button" value="Open" id="select-file"/>   
-                        </li>
-                     </ul>
-                  </li>
-               </ul>
-
-            </li>
-         </ul>
-      </nav>
-      <div class="menu-collapse-line">
-         <!--Menu collapse/expand icon is put and control from LobiAdmin.js file-->
-         <div class="menu-toggle-btn" data-action="collapse-expand-sidebar"></div>
+      <div class="row row-skin-options">
+        <h4>Skins</h4>
+        <div class="col-xs-3">
+          <label class="radio">
+          <input type="radio" name="header-skin" value="0" checked>
+          <div>
+            <div class="setting-header"></div>
+            <div class="setting-menu"></div>
+          </div>
+          <i class="fa fa-check-square"></i>
+          </label>
+        </div>
+        <div class="col-xs-3">
+          <label class="radio">
+          <input type="radio" name="header-skin" value="header-cyan">
+          <div>
+            <div class="setting-header"></div>
+            <div class="setting-menu"></div>
+          </div>
+          <i class="fa fa-check-square"></i>
+          </label>
+        </div>
+        <div class="col-xs-3">
+          <label class="radio">
+          <input type="radio" name="header-skin" value="header-green">
+          <div>
+            <div class="setting-header"></div>
+            <div class="setting-menu"></div>
+          </div>
+          <i class="fa fa-check-square"></i>
+          </label>
+        </div>
+        <div class="col-xs-3">
+          <label class="radio">
+          <input type="radio" name="header-skin" value="header-brown">
+          <div>
+            <div class="setting-header"></div>
+            <div class="setting-menu"></div>
+          </div>
+          <i class="fa fa-check-square"></i>
+          </label>
+        </div>
       </div>
-   </div>
-   <div id="main">
-      <div id="ribbon" class="hidden-print">
-         <a href="#dashboard" class="btn-ribbon" data-container="#main" data-toggle="tooltip" data-title="Show dashboard"><i class="fa fa-home"></i></a>
-         <span class="vertical-devider">&nbsp;</span>
-         <button class="btn-ribbon" data-container="#main" data-action="reload" data-toggle="tooltip" data-title="Reload content by ajax"><i class="fa fa-refresh"></i></button>
-         <ol class="breadcrumb">
-         </ol>
+      <div class="row row-bg-options">
+        <h4>Background</h4>
+        <div class="col-xs-3">
+          <label class="radio" style="background-color: #f2f2f2">
+            <input type="radio" name="body-bg" data-is-color="true" value="#f2f2f2" checked>
+            <i class="fa fa-check-square"></i> </label>
+        </div>
+        <div class="col-xs-3">
+          <label class="radio" style="background-color: #edf1f4">
+            <input type="radio" name="body-bg" data-is-color="true" value="#edf1f4">
+            <i class="fa fa-check-square"></i> </label>
+        </div>
+        <div class="col-xs-3">
+          <label class="radio" style="background-image: url('img/bg/bg1.png')">
+            <input type="radio" name="body-bg" value="img/bg/bg1.png">
+            <i class="fa fa-check-square"></i> </label>
+        </div>
+        <div class="col-xs-3">
+          <label class="radio" style="background-image: url('img/bg/bg4.png')">
+            <input type="radio" name="body-bg" value="img/bg/bg4.png">
+            <i class="fa fa-check-square"></i> </label>
+        </div>
       </div>
-      <div id="content">
-      </div>
-   </div>
-   </div>
-   <!--Setting box-->
-   <div class="setting-box hidden-print">
-      <div class="btn-toggle">
-         <span class="glyphicon glyphicon-cog"></span>
-      </div>
-      <form action class="lobi-form">
-         <fieldset>
-            <header>Settings</header>
-            <div class="form-group">
-               <label class="checkbox-inline lobicheck lobicheck-rounded">
-                            Header fixed
-                            <input type="checkbox" class="fix-header" value="1"> 
-                            <i></i> 
-                        </label>
-            </div>
-            <div class="form-group">
-               <label class="checkbox-inline lobicheck lobicheck-rounded">
-                            Menu fixed
-                            <input type="checkbox" class="fix-menu"> 
-                            <i></i> 
-                        </label>
-            </div>
-            <div class="form-group">
-               <label class="checkbox-inline lobicheck lobicheck-rounded">
-                            Ribbon fixed
-                            <input type="checkbox" class="fix-ribbon"> 
-                            <i></i> 
-                        </label>
-            </div>
-            <div class="row row-skin-options">
-               <h4>Skins</h4>
-               <div class="col-xs-3">
-                  <label class="radio">
-                                <input type="radio" name="header-skin" value="0" checked>
-                                <div>
-                                    <div class="setting-header"></div>
-                                    <div class="setting-menu"></div>
-                                </div>
-                                <i class="fa fa-check-square"></i>
-                            </label>
-               </div>
-               <div class="col-xs-3">
-                  <label class="radio">
-                                <input type="radio" name="header-skin" value="header-cyan">
-                                <div>
-                                    <div class="setting-header"></div>
-                                    <div class="setting-menu"></div>
-                                </div>
-                                <i class="fa fa-check-square"></i>
-                            </label>
-               </div>
-               <div class="col-xs-3">
-                  <label class="radio">
-                                <input type="radio" name="header-skin" value="header-green">
-                                <div>
-                                    <div class="setting-header"></div>
-                                    <div class="setting-menu"></div>
-                                </div>
-                                <i class="fa fa-check-square"></i>
-                            </label>
-               </div>
-               <div class="col-xs-3">
-                  <label class="radio">
-                                <input type="radio" name="header-skin" value="header-brown">
-                                <div>
-                                    <div class="setting-header"></div>
-                                    <div class="setting-menu"></div>
-                                </div>
-                                <i class="fa fa-check-square"></i>
-                            </label>
-               </div>
-            </div>
-            <div class="row row-bg-options">
-               <h4>Background</h4>
-               <div class="col-xs-3">
-                  <label class="radio" style="background-color: #f2f2f2">
-                                <input type="radio" name="body-bg" data-is-color="true" value="#f2f2f2" checked>
-                                <i class="fa fa-check-square"></i>
-                            </label>
-               </div>
-               <div class="col-xs-3">
-                  <label class="radio" style="background-color: #edf1f4">
-                                <input type="radio" name="body-bg" data-is-color="true" value="#edf1f4">
-                                <i class="fa fa-check-square"></i>
-                            </label>
-               </div>
-               <div class="col-xs-3">
-                  <label class="radio" style="background-image: url('img/bg/bg1.png')">
-                                <input type="radio" name="body-bg" value="img/bg/bg1.png">
-                                <i class="fa fa-check-square"></i>
-                            </label>
-               </div>
-               <div class="col-xs-3">
-                  <label class="radio" style="background-image: url('img/bg/bg4.png')">
-                                <input type="radio" name="body-bg" value="img/bg/bg4.png">
-                                <i class="fa fa-check-square"></i>
-                            </label>
-               </div>
-            </div>
-            <button class="btn btn-primary btn-block btn-pretty" data-action="clear-storage"><i class="fa fa-refresh"></i> Clear local storage</button>
-         </fieldset>
-      </form>
-   </div>
-   <!--Loading indicator for ajax page loading-->
-   <div class="spinner spinner-horizontal hide">
-      <span class="spinner-text">Loading...</span>
-      <div class="bounce1"></div>
-      <div class="bounce2"></div>
-      <div class="bounce3"></div>
-   </div>
-   <!-- Insert this line above script imports  -->
-   <script>
+      <button class="btn btn-primary btn-block btn-pretty" data-action="clear-storage"><i class="fa fa-refresh"></i> Clear local storage</button>
+    </fieldset>
+  </form>
+</div>
+<!--Loading indicator for ajax page loading-->
+<div class="spinner spinner-horizontal hide"> <span class="spinner-text">Loading...</span>
+  <div class="bounce1"></div>
+  <div class="bounce2"></div>
+  <div class="bounce3"></div>
+</div>
+<!-- Insert this line above script imports  --> 
+<script>
       if (typeof module === 'object') {
          window.module = module;
          module = undefined;
       }
-   </script>
-   <!-- normal script imports etc  -->
-   <script type="text/javascript" src="js/lib/jquery.min.js"></script>
-   <script type="text/javascript" src="js/lib/jquery-ui.min.js"></script>
-   <script type="text/javascript" src="js/bootstrap/bootstrap.min.js"></script>
-   <script type="text/javascript" src="js/lobi-plugins/lobibox.min.js"></script>
-   <script type="text/javascript" src="js/lobi-plugins/lobipanel.min.js"></script>
-   <script type="text/javascript" src="js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
-   <!--Make sure that config.js file is loaded before LobiAdmin.js-->
-   <script type="text/javascript" src="js/config.js"></script>
-   <script type="text/javascript" src="js/LobiAdmin.min.js"></script>
-   <script type="text/javascript" src="js/app.js"></script>
-   <script>
+   </script> 
+<!-- normal script imports etc  --> 
+<script type="text/javascript" src="js/lib/jquery.min.js"></script> 
+<script type="text/javascript" src="js/lib/jquery-ui.min.js"></script> 
+<script type="text/javascript" src="js/bootstrap/bootstrap.min.js"></script> 
+<script type="text/javascript" src="js/lobi-plugins/lobibox.min.js"></script> 
+<script type="text/javascript" src="js/lobi-plugins/lobipanel.min.js"></script> 
+<script type="text/javascript" src="js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script> 
+<!--Make sure that config.js file is loaded before LobiAdmin.js--> 
+<script type="text/javascript" src="js/config.js"></script> 
+<script type="text/javascript" src="js/LobiAdmin.min.js"></script> 
+<script type="text/javascript" src="js/app.js"></script> 
+<script>
       function initPanel() {
          $('.panel').lobiPanel({
             sortable: true
@@ -791,7 +272,7 @@
          }
       });
       //Content Container is modified. 
-      $("body").on('DOMSubtreeModified', "#content", function() {
+      //$("body").on('DOMSubtreeModified', "#content", function() {
          /*if (($("#panel-title").html()).indexOf("<input") >= 0) {
             console.log('is a string with input in the string')
             console.log(($("#panel-title").html()));
@@ -799,8 +280,42 @@
             console.log(($("#panel-title").html()));
             updateSitePanel(($("#panel-title").html()));
          }*/
+        // console.log("content modified");
 
-      });
+      //});
+
+
+      // Select the node that will be observed for mutations
+      var targetNode = document.getElementById('content');
+
+      // Options for the observer (which mutations to observe)
+      var config = { attributes: true, childList: true, subtree: true };
+
+      // Callback function to execute when mutations are observed
+      var callback = function(mutationsList) {
+          for(var mutation of mutationsList) {
+              if (mutation.type == 'childList') {
+                  console.log('A child node has been added or removed.!!!');
+              }
+              else if (mutation.type == 'attributes') {
+                  console.log('The ' + mutation.attributeName + ' attribute was modified!!!!');
+              }else{
+                console.log('something else');
+              }
+          }
+      };
+
+      // Create an observer instance linked to the callback function
+      var observer = new MutationObserver(callback);
+
+      // Start observing the target node for configured mutations
+      observer.observe(targetNode, config);
+
+      // Later, you can stop observing
+      observer.disconnect();
+
+
+
       //Top Search field modified by hitting enter.
       $("#search").on('keyup', function(e) {
          if (e.keyCode == 13) {
@@ -921,10 +436,20 @@
                     alert("The file has been succesfully saved");
                 }); 
             }
-        </script>
-   <script>
+        </script> 
+
+
+
+<script src="./pages/jQuery-gridmanager-master/demo/js/jquery.js"></script>
+    <script src="./pages/jQuery-gridmanager-master/demo/js/jquery-ui.js"></script>
+    <script src="./pages/jQuery-gridmanager-master/demo/js/bootstrap.js"></script>
+    <script src="https://cdn.ckeditor.com/4.4.3/standard/ckeditor.js"></script> 
+    <script src="https://cdn.ckeditor.com/4.4.3/standard/adapters/jquery.js"></script> 
+    <script src="./pages/jQuery-gridmanager-master/dist/js/jquery.gridmanager.js"></script>
+
+
+<script>
       if (window.module) module = window.module;
    </script>
 </body>
-
 </html>
